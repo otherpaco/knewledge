@@ -1,0 +1,7 @@
+# Struktur
+
+## Models
+
+## Controller
+
+## Routes
