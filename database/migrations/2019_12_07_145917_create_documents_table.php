@@ -15,10 +15,10 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('title', 255);
-            $table->char('subtitle', 255);
+            $table->string('title');
+            $table->string('subtitle');
             $table->text('abstract');
-            $table->dateTime('releasedate');
+            $table->dateTime('release_date');
             $table->timestamps();
         });
     }

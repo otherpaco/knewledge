@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Document;
 use App\document;
 use Illuminate\Http\Request;
 
@@ -41,10 +42,10 @@ class DocumentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\document  $document
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function show(document $document)
+    public function show(Document $document)
     {
         //
     }
@@ -52,10 +53,10 @@ class DocumentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\document  $document
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function edit(document $document)
+    public function edit(Document $document)
     {
         //
     }
@@ -64,10 +65,10 @@ class DocumentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\document  $document
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, document $document)
+    public function update(Request $request, Document $document)
     {
         //
     }
@@ -75,10 +76,10 @@ class DocumentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\document  $document
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function destroy(document $document)
+    public function destroy(Document $document)
     {
         //
     }
