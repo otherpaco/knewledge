@@ -9,6 +9,6 @@ class Mediatype extends Model
 {
     public function documents()
     {
-        return $this->belongsToMany(Document::class);
+        return $this->hasMany(Document::class);
     }
 }

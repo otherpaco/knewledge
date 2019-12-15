@@ -27,12 +27,12 @@ class Document extends Model
 
     public function mediatypes()
     {
-        return $this->belongsToMany(Mediatype::class);
+        return $this->belongsTo(Mediatype::class);
     }
 
     public function ressources()
     {
-        return $this->belongsToMany(Ressource::class);
+        return $this->hasMany(Ressource::class);
     }
 
     public function tags()

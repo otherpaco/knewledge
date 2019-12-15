@@ -19,6 +19,9 @@ class CreateDocumentsTable extends Migration
             $table->string('subtitle');
             $table->text('abstract');
             $table->dateTime('release_date');
+            $table->unsignedBigInteger('mediatype_id');
+            $table->foreign('mediatype_id')
+              ->references('id')->on('mediatypes');
             $table->timestamps();
         });
     }
