@@ -1,0 +1,25 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: phpunit
+  pull: if-not-exists
+  image: lorisleiva/laravel-docker
+  volumes:
+  - name: cache
+    path: /drone/src/composer_cache
+  environment:
+    COMPOSER_HOME: /drone/src/composer_cache
+  commands:
+  - composer install
+  - cp .env.example .env
+  - composer install --no-interaction --prefer-dist --optimize-autoloader
+  - php artisan key:generate
+  - ./vendor/bin/phpunit
+
+volumes:
+- name: cache
+  host:
+    path: /tmp/drone/cache/composer
