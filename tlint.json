@@ -1,0 +1,10 @@
+{
+  "preset": "laravel",
+  "disabled": [
+    "NoInlineVarDocs", "SpaceAfterBladeDirectives", "RemoveLeadingSlashNamespaces",
+    "NoLeadingSlashesOnRoutePaths", "ModelMethodOrder"
+  ],
+  "excluded": [
+    "tests/"
+  ]
+}

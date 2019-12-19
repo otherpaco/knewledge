@@ -8,7 +8,7 @@ steps:
   pull: if-not-exists
   image: lorisleiva/laravel-docker
   volumes:
-  - name: cache
+  - name: composer
     path: /drone/src/composer_cache
   environment:
     COMPOSER_HOME: /drone/src/composer_cache
@@ -18,8 +18,24 @@ steps:
   - composer install --no-interaction --prefer-dist --optimize-autoloader
   - php artisan key:generate
   - ./vendor/bin/phpunit
+- name: PSR2
+  pull: if-not-exists
+  image: lorisleiva/laravel-docker
+  commands:
+  - phpcs --standard=PSR2 --exclude=Squiz.Scope.MethodScope,PSR1.Methods.CamelCapsMethodName app
+- name: Code-Style
+  pull: if-not-exists
+  image: lorisleiva/laravel-docker
+  volumes:
+  - name: composer
+    path: /drone/src/composer_cache
+  environment:
+    COMPOSER_HOME: /drone/src/composer_cache
+  commands:
+  - composer global require tightenco/tlint illuminate/support
+  - ./composer_cache/vendor/bin/tlint
 
 volumes:
-- name: cache
+- name: composer
   host:
-    path: /tmp/drone/cache/composer
+    path: /composer
