@@ -16,9 +16,9 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('subtitle');
-            $table->text('abstract');
-            $table->dateTime('release_date');
+            $table->string('subtitle')->nullable();
+            $table->text('abstract')->nullable();
+            $table->dateTime('release_date')->nullable();
             $table->unsignedBigInteger('mediatype_id');
             $table->foreign('mediatype_id')
               ->references('id')->on('mediatypes');
