@@ -17,7 +17,7 @@ class MediatypeTest extends TestCase
     public function it_has_a_name()
     {
         $name = $this->faker->word;
-        $type = Mediatype::create(['name' => $name]);
+        $type = factory(Mediatype::class)->create(['name' => $name]);
 
         $this->assertDatabaseHas('mediatypes', ['name' => $name]);
         $this->assertEquals($name, $type->name);
@@ -26,9 +26,9 @@ class MediatypeTest extends TestCase
     /** @test */
     public function its_names_are_unique()
     {
-        Mediatype::create(['name' => 'unique']);
+        factory(Mediatype::class)->create(['name' => 'unique']);
         $this->expectException(QueryException::class);
         $this->expectExceptionMessageRegExp('/UNIQUE constraint failed/');
-        Mediatype::create(['name' => 'unique']);
+        factory(Mediatype::class)->create(['name' => 'unique']);
     }
 }
