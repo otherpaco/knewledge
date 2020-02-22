@@ -11,12 +11,16 @@ class MediatypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mediatypes')->updateOrInsert([
+        $seeds = [
             ['name' => 'pdf', 'title' => 'PDF'],
             ['name' => 'url', 'title' => 'Website'],
             ['name' => 'book', 'title' => 'Book'],
             ['name' => 'audio', 'title' => 'Audio'],
             ['name' => 'video', 'title' => 'Video'],
-        ]);
+        ];
+
+        foreach ($seeds as $seed) {
+            DB::table('mediatypes')->updateOrInsert($seed, []);
+        }
     }
 }
