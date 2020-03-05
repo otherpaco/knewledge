@@ -25,13 +25,13 @@
                                 {{ __('E-Mail Address') }}:
                             </label>
 
-                            <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline{{ $errors->has('email') ? ' border-red' : '' }}" name="email" value="{{ old('email') }}" required>
+                            <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                            @if ($errors->has('email'))
+                            @error('email')
                                 <p class="text-red-500 text-xs italic mt-4">
-                                    {{ $errors->first('email') }}
+                                    {{ $message }}
                                 </p>
-                            @endif
+                            @enderror
                         </div>
 
                         <div class="flex flex-wrap">
@@ -41,7 +41,7 @@
 
                             <p class="w-full text-xs text-center text-grey-dark mt-8 -mb-4">
                                 <a class="text-blue-500 hover:text-blue-700 no-underline" href="{{ route('login') }}">
-                                    Back to login
+                                    {{ __('Back to login') }}
                                 </a>
                             </p>
                         </div>

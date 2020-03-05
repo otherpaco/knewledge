@@ -14,7 +14,7 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->text('abstract')->nullable();

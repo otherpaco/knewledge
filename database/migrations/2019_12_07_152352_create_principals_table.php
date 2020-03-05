@@ -14,7 +14,7 @@ class CreatePrincipalsTable extends Migration
     public function up()
     {
         Schema::create('principals', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->timestamps();
         });
     }

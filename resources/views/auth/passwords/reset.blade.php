@@ -20,13 +20,13 @@
                                 {{ __('E-Mail Address') }}:
                             </label>
 
-                            <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline{{ $errors->has('email') ? ' border-red' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                            <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                            @if ($errors->has('email'))
+                            @error('email')
                                 <p class="text-red-500 text-xs italic mt-4">
-                                    {{ $errors->first('email') }}
+                                    {{ $message }}
                                 </p>
-                            @endif
+                            @enderror
                         </div>
 
                         <div class="flex flex-wrap mb-6">
@@ -34,13 +34,13 @@
                                 {{ __('Password') }}:
                             </label>
 
-                            <input id="password" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline{{ $errors->has('password') ? ' border-red' : '' }}" name="password" required>
+                            <input id="password" type="password" class="form-input w-full @error('password') border-red-500 @enderror" name="password" required autocomplete="new-password">
 
-                            @if ($errors->has('password'))
+                            @error('password')
                                 <p class="text-red-500 text-xs italic mt-4">
-                                    {{ $errors->first('password') }}
+                                    {{ $message }}
                                 </p>
-                            @endif
+                            @enderror
                         </div>
 
                         <div class="flex flex-wrap mb-6">
@@ -48,7 +48,7 @@
                                 {{ __('Confirm Password') }}:
                             </label>
 
-                            <input id="password-confirm" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirmation" required>
+                            <input id="password-confirm" type="password" class="form-input w-full" name="password_confirmation" required autocomplete="new-password">
                         </div>
 
                         <div class="flex flex-wrap">

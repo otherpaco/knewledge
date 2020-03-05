@@ -14,7 +14,7 @@ class CreateRessourcesTable extends Migration
     public function up()
     {
         Schema::create('ressources', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->unsignedBigInteger('document_id');
             $table->foreign('document_id')
               ->references('id')->on('documents');
