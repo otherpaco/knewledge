@@ -25,7 +25,7 @@ class Document extends Model
         return $this->belongsToMany(Principal::class);
     }
 
-    public function mediatypes()
+    public function mediatype()
     {
         return $this->belongsTo(Mediatype::class);
     }
