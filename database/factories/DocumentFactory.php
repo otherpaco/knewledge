@@ -11,6 +11,6 @@ $factory->define(Document::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'subtitle' => $faker->sentence,
         'abstract' => $faker->paragraph,
-        'mediaType_id' => factory(MediaType::class),
+        'media_type_id' => factory(MediaType::class),
     ];
 });
