@@ -25,6 +25,11 @@ class Document extends Model
         return $this->belongsToMany(Principal::class);
     }
 
+    public function language()
+    {
+        return $this->belongsTo(Language::class, 'language_code', 'code');
+    }
+
     public function mediaType()
     {
         return $this->belongsTo(MediaType::class);
