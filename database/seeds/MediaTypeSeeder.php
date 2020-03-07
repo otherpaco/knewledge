@@ -1,9 +1,9 @@
 <?php
 
-use App\Mediatype;
+use App\MediaType;
 use Illuminate\Database\Seeder;
 
-class MediatypeSeeder extends Seeder
+class MediaTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,7 +21,7 @@ class MediatypeSeeder extends Seeder
         ];
 
         foreach ($seeds as $seed) {
-            Mediatype::updateOrCreate($seed);
+            MediaType::updateOrCreate($seed);
         }
     }
 }

@@ -14,6 +14,6 @@ class ProductionSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(MediatypeSeeder::class);
+        $this->call(MediaTypeSeeder::class);
     }
 }

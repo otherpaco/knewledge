@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Document;
-use App\Mediatype;
+use App\MediaType;
 use Faker\Generator as Faker;
 
 $factory->define(Document::class, function (Faker $faker) {
@@ -11,6 +11,6 @@ $factory->define(Document::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'subtitle' => $faker->sentence,
         'abstract' => $faker->paragraph,
-        'mediatype_id' => factory(Mediatype::class),
+        'mediaType_id' => factory(MediaType::class),
     ];
 });

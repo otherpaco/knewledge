@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMediatypesTable extends Migration
+class CreateMediaTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMediatypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mediatypes', function (Blueprint $table) {
+        Schema::create('media_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('title');
@@ -28,6 +28,6 @@ class CreateMediatypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mediatypes');
+        Schema::dropIfExists('media_types');
     }
 }

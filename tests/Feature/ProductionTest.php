@@ -16,6 +16,6 @@ class ProductionTest extends TestCase
     public function it_has_a_production_seeder()
     {
         $this->seed(ProductionSeeder::class);
-        $this->assertDatabaseHas('mediatypes', ['name' => 'pdf']);
+        $this->assertDatabaseHas('media_types', ['name' => 'pdf']);
     }
 }

@@ -5,7 +5,7 @@ namespace App;
 use App\Document;
 use Illuminate\Database\Eloquent\Model;
 
-class Mediatype extends Model
+class MediaType extends Model
 {
     public function documents()
     {

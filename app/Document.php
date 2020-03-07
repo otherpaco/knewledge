@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Author;
-use App\Mediatype;
+use App\MediaType;
 use App\Principal;
 use App\Publisher;
 use Illuminate\Database\Eloquent\Model;
@@ -25,9 +25,9 @@ class Document extends Model
         return $this->belongsToMany(Principal::class);
     }
 
-    public function mediatype()
+    public function mediaType()
     {
-        return $this->belongsTo(Mediatype::class);
+        return $this->belongsTo(MediaType::class);
     }
 
     public function ressources()

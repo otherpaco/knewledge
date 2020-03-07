@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
-use App\Mediatype;
+use App\MediaType;
 use Tests\TestCase;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class MediatypeTest extends TestCase
+class MediatTypeTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
@@ -17,18 +17,18 @@ class MediatypeTest extends TestCase
     public function it_has_a_name()
     {
         $name = $this->faker->word;
-        $type = factory(Mediatype::class)->create(['name' => $name]);
+        $type = factory(MediaType::class)->create(['name' => $name]);
 
-        $this->assertDatabaseHas('mediatypes', ['name' => $name]);
+        $this->assertDatabaseHas('media_types', ['name' => $name]);
         $this->assertEquals($name, $type->name);
     }
 
     /** @test */
     public function its_names_are_unique()
     {
-        factory(Mediatype::class)->create(['name' => 'unique']);
+        factory(MediaType::class)->create(['name' => 'unique']);
         $this->expectException(QueryException::class);
         $this->expectExceptionMessageRegExp('/UNIQUE constraint failed/');
-        factory(Mediatype::class)->create(['name' => 'unique']);
+        factory(MediaType::class)->create(['name' => 'unique']);
     }
 }
