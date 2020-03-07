@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Sushi\Sushi;
 
 class Language extends Model
@@ -17,9 +18,8 @@ class Language extends Model
     public function getRows()
     {
         return collect(json_decode(file_get_contents($this->getPath()), true))
-            ->map(function ($languageName, $code) {
-                return ['code' => $code, 'name' => $languageName];
-            })->values()->toArray();
+            ->map(fn($value, $key) => ['code' => $key, 'name' => $value])
+            ->values()->toArray();
     }
 
     protected function getPath()
