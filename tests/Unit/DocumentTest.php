@@ -19,4 +19,12 @@ class DocumentTest extends TestCase
 
         $this->assertEquals($mediaType->id, $document->mediaType->id);
     }
+
+    /** @test */
+    public function it_has_a_language()
+    {
+        $document = factory(Document::class)->create(['language_code' => 'en']);
+
+        $this->assertEquals('English', $document->language->name);
+    }
 }

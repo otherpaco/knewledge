@@ -12,5 +12,6 @@ $factory->define(Document::class, function (Faker $faker) {
         'subtitle' => $faker->sentence,
         'abstract' => $faker->paragraph,
         'media_type_id' => factory(MediaType::class),
+        'language_code' => $faker->randomElement(['de', 'fr', 'en', 'es']),
     ];
 });
