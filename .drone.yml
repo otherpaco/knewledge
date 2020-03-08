@@ -6,7 +6,7 @@ name: default
 steps:
 - name: composer install
   pull: if-not-exists
-  image: lorisleiva/laravel-docker
+  image: lorisleiva/laravel-docker:7.4
   volumes:
   - name: composer
     path: /drone/src/composer_cache
@@ -18,12 +18,12 @@ steps:
   - php artisan key:generate
 - name: phpunit
   pull: if-not-exists
-  image: lorisleiva/laravel-docker
+  image: lorisleiva/laravel-docker:7.4
   commands:
   - phpunit
 - name: PSR2
   pull: if-not-exists
-  image: lorisleiva/laravel-docker
+  image: lorisleiva/laravel-docker:7.4
   commands:
   - phpcs --standard=PSR2 --exclude=Squiz.Scope.MethodScope,PSR1.Methods.CamelCapsMethodName app
 
