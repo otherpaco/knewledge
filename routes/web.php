@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home.index');
 
+Route::resource('documents', 'DocumentController');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('admin', function () {
         return 'hello';

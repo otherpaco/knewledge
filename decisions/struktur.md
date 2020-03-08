@@ -32,6 +32,7 @@ Mindestens zwei Root Tags:
 - subtitle
 - abstract
 - release_date
+- language_code
 - media_type_id
 - author (many-to-many)
 - publisher (many-to-many)

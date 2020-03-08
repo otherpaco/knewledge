@@ -27,4 +27,12 @@ class DocumentTest extends TestCase
 
         $this->assertEquals('English', $document->language->name);
     }
+
+    // it has - language_code
+    // - media_type_id
+    // - author (many-to-many)
+    // - publisher (many-to-many)
+    // - principal (many-to-many)
+    // - actor (many-to-many)
+    // - link (many-to-one)
 }
