@@ -11,6 +11,7 @@ $factory->define(Document::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'subtitle' => $faker->sentence,
         'abstract' => $faker->paragraph,
+        'release_date' => $faker->dateTime,
         'media_type_id' => factory(MediaType::class),
         'language_code' => $faker->randomElement(['de', 'fr', 'en', 'es']),
     ];

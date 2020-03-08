@@ -27,4 +27,31 @@ class DocumentTest extends TestCase
 
         $this->assertEquals('English', $document->language->name);
     }
+
+    /** @test */
+    public function it_has_an_author()
+    {
+        $document = factory(Document::class)->create();
+        $author = factory(Author::Class);
+    }
+
+    /** @test */
+    public function it_has_a_publisher()
+    {
+    }
+
+    /** @test */
+    public function it_has_a_princiapl()
+    {
+    }
+
+    /** @test */
+    public function it_has_an_actor()
+    {
+    }
+
+    /** @test */
+    public function it_has_a_link()
+    {
+    }
 }
