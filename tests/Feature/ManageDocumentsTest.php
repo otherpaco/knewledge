@@ -35,12 +35,14 @@ class ManageDocumentsTest extends TestCase
         }
     }
 
-    /** test */
+    /** @test */
     public function documentpage_shows_document_properties()
     {
         $mediaType = factory(MediaType::class)->create();
 
-        $actors = [
+        $actors = factory(Actor::class, 8)->create();
+
+        [
             $author0,
             $publisher0,
             $principal0,
@@ -49,63 +51,52 @@ class ManageDocumentsTest extends TestCase
             $publisher1,
             $principal1,
             $actor1,
-        ];
-
-        $actors = factory(Actor:class, 8)->create();
-
-        $links = [
-            $link0,
-            $link1
-        ];
+        ] = $actors;
 
         $links = factory(Link::class, 2)->create();
 
+        [
+            $link0,
+            $link1
+        ] = $links;
+
         $attributes = [
-            // 'title' => '',
-            // 'subtitle' => '',
-            // 'abstract' => '',
-            // 'release_date' => '',
             'language_code' => 'es',
             'media_type_id' => $mediaType->id,
         ];
 
         $document = factory(Document::class)->create($attributes);
-        //TODO create documents with blank values for optional attributes
 
-        $document->authors()->attach($author0->id);
-        $document->authors()->attach($author1->id);
+        $document->authors()->attach($author0);
+        $document->authors()->attach($author1);
 
-        $document->publishers()->attach($publisher0->id);
-        $document->publishers()->attach($publisher1->id);
+        $document->publishers()->attach($publisher0);
+        $document->publishers()->attach($publisher1);
 
-        $document->principals()->attach($principal0->id);
-        $document->principals()->attach($principal1->id);
+        $document->principals()->attach($principal0);
+        $document->principals()->attach($principal1);
 
-        $document->actors()->attach($actor0->id);
-        $document->actors()->attach($actor1->id);
+        $document->actors()->attach($actor0);
+        $document->actors()->attach($actor1);
 
-        $document->links()->attach($link0->id);
-        $document->links()->attach($link1->id);
+        $document->links()->attach($link0);
+        $document->links()->attach($link1);
 
-        $response = $this->get(route('document.show',['document' => $document->id]))
-            ->assertSee($document->id)
+        $response = $this->get(route('documents.show', ['document' => $document->id]))
             ->assertSee($document->title)
             ->assertSee($document->subtitle)
             ->assertSee($document->abstract)
-            ->assertSee($document->release_date->format('Y')) //maybe modified
-            ->assertSee('spanisch') //language_code
-            ->assertSee($mediaType->name); //media_type_id
+            ->assertSee($document->release_date->format('Y'))
+            ->assertSee('Spanish')
+            ->assertSee($mediaType->name);
 
         foreach ($actors as $actor) {
-            $response->assetSee($actor->name)
-            ->assetSee($actor->description)
-            ->assetSee($actor->url);
+            $response->assertSee($actor->name);
         }
 
         foreach ($links as $link) {
-            $response->assetSee($link->title)
-            ->assetSee($link->url);
+            $response->assertSee($link->title)
+                ->assertSee($link->url);
         }
-
     }
 }

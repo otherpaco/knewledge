@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Document;
-use App\document;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
