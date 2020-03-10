@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAuthorDocumentPivotTable extends Migration
+class CreateDocumentTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateAuthorDocumentPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('author_document', function (Blueprint $table) {
-            $table->unsignedBigInteger('author_id')->index();
-            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
+        Schema::create('document_tag', function (Blueprint $table) {
             $table->unsignedBigInteger('document_id')->index();
             $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
-            $table->primary(['author_id', 'document_id']);
+            $table->unsignedBigInteger('tag_id')->index();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->primary(['document_id', 'tag_id']);
         });
     }
 
@@ -28,6 +28,6 @@ class CreateAuthorDocumentPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('author_document');
+        Schema::dropIfExists('document_tag');
     }
 }

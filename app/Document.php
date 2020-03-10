@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Actor;
 use App\Author;
+use App\Link;
 use App\MediaType;
 use App\Principal;
 use App\Publisher;
@@ -10,6 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
+    protected $dates = ['release_date'];
+
+    public function actors()
+    {
+        return $this->belongsToMany(Actor::class);
+    }
+
     public function authors()
     {
         return $this->belongsToMany(Author::class);
@@ -43,5 +52,10 @@ class Document extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function links()
+    {
+        return $this->hasMany(Link::class);
     }
 }

@@ -2,11 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Actor;
+use App\Document;
+use App\Link;
+use App\MediaType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Document;
-use App\MediaType;
 
 class ManageDocumentsTest extends TestCase
 {
@@ -39,28 +41,18 @@ class ManageDocumentsTest extends TestCase
     public function documentpage_shows_document_properties()
     {
         $mediaType = factory(MediaType::class)->create();
-
         $actors = factory(Actor::class, 8)->create();
-
-        [
-            $author0,
-            $publisher0,
-            $principal0,
-            $actor0,
-            $author1,
-            $publisher1,
-            $principal1,
-            $actor1,
-        ] = $actors;
-
         $links = factory(Link::class, 2)->create();
 
-        [
-            $link0,
-            $link1
-        ] = $links;
+        [$author0, $publisher0, $principal0, $actor0, $author1, $publisher1, $principal1, $actor1] = $actors;
+
+
+        [$link0, $link1] = $links;
 
         $attributes = [
+            'title' => 'Super special document',
+            'subtitle' => 'An investigative report',
+            'abstract' => 'a lazy short abstract',
             'language_code' => 'es',
             'media_type_id' => $mediaType->id,
         ];
@@ -79,14 +71,14 @@ class ManageDocumentsTest extends TestCase
         $document->actors()->attach($actor0);
         $document->actors()->attach($actor1);
 
-        $document->links()->attach($link0);
-        $document->links()->attach($link1);
+        $document->links()->save($link0);
+        $document->links()->save($link1);
 
         $response = $this->get(route('documents.show', ['document' => $document->id]))
             ->assertSee($document->title)
             ->assertSee($document->subtitle)
             ->assertSee($document->abstract)
-            ->assertSee($document->release_date->format('Y'))
+            ->assertSee($document->release_date->format('Y-m-d'))
             ->assertSee('Spanish')
             ->assertSee($mediaType->name);
 
