@@ -8,7 +8,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class MediatTypeTest extends TestCase
+class MediaTypeTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
@@ -28,7 +28,7 @@ class MediatTypeTest extends TestCase
     {
         factory(MediaType::class)->create(['name' => 'unique']);
         $this->expectException(QueryException::class);
-        $this->expectExceptionMessageRegExp('/UNIQUE constraint failed/');
+        $this->expectExceptionMessageMatches('/UNIQUE constraint failed/');
         factory(MediaType::class)->create(['name' => 'unique']);
     }
 }

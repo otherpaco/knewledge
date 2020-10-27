@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\MediaType;
 use Illuminate\Database\Seeder;
 
