@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <div id="app">
@@ -19,7 +20,7 @@
                 <div class="flex items-center justify-center">
                     <div class="mr-6">
                         <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
-                            {{ config('app.name', 'Laravel') }}
+                            {{ config('app.name') }}
                         </a>
                     </div>
                     <div class="flex-1 text-right">
@@ -44,10 +45,15 @@
             </div>
         </nav>
 
-        @yield('content')
+        <main>
+            {{ $slot }}
+        </main>
+
     </div>
 
     <!-- Scripts -->
+    @stack('modals')
+    @livewireScripts
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
