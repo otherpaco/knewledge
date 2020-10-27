@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <div class="flex items-center">
         <div class="md:w-1/2 md:mx-auto">
 
@@ -8,7 +6,7 @@
 
                 <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
                     @foreach ($documents as $document)
-                        <li>{{ $document->title }}</li>                        
+                        <li>{{ $document->title }}</li>
                     @endforeach
                 </div>
 
@@ -20,4 +18,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
