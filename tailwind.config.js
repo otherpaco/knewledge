@@ -1,13 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    future: {
-        removeDeprecatedGapUtilities: true,
-        purgeLayersByDefault: true,
-        defaultLineHeights: true,
-        standardFontWeights: true
-    },
+    mode: 'jit',
     purge: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
@@ -17,13 +13,5 @@ module.exports = {
         extend: {},
     },
 
-    variants: {
-        opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    },
-
-    plugins: [
-        require('@tailwindcss/custom-forms'),
-        require('@tailwindcss/ui'),
-    ],
-
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
