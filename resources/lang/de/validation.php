@@ -9,11 +9,12 @@ return [
     |
     | The following language lines contain the default error messages used by
     | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages.
+    | as the size rules. Feel free to tweak each of these messages here.
     |
     */
 
     'accepted' => ':attribute muss akzeptiert werden.',
+    'accepted_if' => ':attribute muss akzeptiert werden wenn :other :value ist.',
     'active_url' => ':attribute ist keine gültige Internet-Adresse.',
     'after' => ':attribute muss ein Datum nach dem :date sein.',
     'after_or_equal' => ':attribute muss ein Datum nach dem :date oder gleich dem :date sein.',
@@ -31,6 +32,7 @@ return [
     ],
     'boolean' => ":attribute muss entweder 'true' oder 'false' sein.",
     'confirmed' => ':attribute stimmt nicht mit der Bestätigung überein.',
+    'current_password' => 'Das Passwort ist nicht korrekt.',
     'date' => ':attribute muss ein gültiges Datum sein.',
     'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format' => ':attribute entspricht nicht dem gültigen Format für :format.',
@@ -90,6 +92,7 @@ return [
         'string' => ':attribute muss mindestens :min Zeichen lang sein.',
         'array' => ':attribute muss mindestens :min Elemente haben.',
     ],
+    'multiple_of' => ':attribute muss ein Vielfaches von :value sein.',
     'not_in' => 'Der gewählte Wert für :attribute ist ungültig.',
     'not_regex' => ':attribute hat ein ungültiges Format.',
     'numeric' => ':attribute muss eine Zahl sein.',
@@ -103,6 +106,10 @@ return [
     'required_with_all' => ':attribute muss angegeben werden, wenn :values ausgefüllt wurde.',
     'required_without' => ':attribute muss angegeben werden, wenn :values nicht ausgefüllt wurde.',
     'required_without_all' => ':attribute muss angegeben werden, wenn keines der Felder :values ausgefüllt wurde.',
+    'prohibited' => 'Das :attribute Feld ist nicht gestattet.',
+    'prohibited_if' => 'Das :attribute Feld ist nicht gestattet wenn :other :value ist.',
+    'prohibited_unless' => 'Das :attribute Feld ist nicht gestattet solang :other nicht in :values ist.',
+    'prohibits' => 'Das :attribute Feld verbietet, dass :other präsent ist.',
     'same' => ':attribute und :other müssen übereinstimmen.',
     'size' => [
         'numeric' => ':attribute muss gleich :size sein.',
